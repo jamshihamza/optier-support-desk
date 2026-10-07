@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/noto-sans-malayalam";
+
+/*
+ * Design tokens (docs/UI.md section 2). Light is the default; the theme toggle sets
+ * data-theme="dark" on <html>. To rebrand, change --accent only.
+ */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --surface-2: #eceff0;
+  --border: #d9dfe1;
+  --text: #15202b;
+  --muted: #566573;
+  --accent: #0b6e80;
+  --accent-hover: #095a69;
+  --accent-soft: #dcedf0;
+  --accent-fg: #ffffff;
+  --ok: #2b7a4b;
+  --ok-soft: #dff0e5;
+  --warn: #9a5b00;
+  --warn-soft: #fbecd0;
+  --danger: #b3261e;
+  --danger-soft: #f9dedc;
+  --info: #2a62a8;
+  --info-soft: #dce8f6;
+  --neutral-soft: #e4e8ea;
+  --shadow: 0 1px 2px rgb(16 24 32 / 0.06), 0 4px 16px rgb(16 24 32 / 0.06);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e151b;
+  --surface: #151e26;
+  --surface-2: #1c2731;
+  --border: #2a3945;
+  --text: #e7edf0;
+  --muted: #94a3af;
+  --accent: #3fb2c6;
+  --accent-hover: #5cc3d5;
+  --accent-soft: #123640;
+  --accent-fg: #07161a;
+  --ok: #5dc486;
+  --ok-soft: #12301f;
+  --warn: #f0b24a;
+  --warn-soft: #3a2a0c;
+  --danger: #ff8a80;
+  --danger-soft: #3e1814;
+  --info: #7fb2ee;
+  --info-soft: #132a45;
+  --neutral-soft: #222e38;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-neutral-soft: var(--neutral-soft);
+  --font-sans:
+    "Inter Variable", "Noto Sans Malayalam Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --shadow-soft: var(--shadow);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ticket numbers and counts line up in tables. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: the reduced-motion override must win over component styles */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: same reason */
+    transition-duration: 0.01ms !important;
+  }
+}

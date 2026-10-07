@@ -1,0 +1,25 @@
+{
+  "name": "optier-support-desk",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @optier/shared build && pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "check": "pnpm build && pnpm lint && pnpm typecheck && pnpm test",
+    "db:migrate": "pnpm --filter @optier/server migrate",
+    "db:seed": "pnpm --filter @optier/server seed"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.3"
+  }
+}

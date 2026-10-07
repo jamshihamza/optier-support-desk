@@ -1,0 +1,15 @@
+# SITE_ADDRESS=":80" serves plain HTTP on the LAN. Set it to a real hostname (for example
+# support.example.com) and Caddy obtains HTTPS certificates automatically. See ops/RUNBOOK.md.
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	handle /api/* {
+		reverse_proxy server:3000
+	}
+
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

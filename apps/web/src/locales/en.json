@@ -1,0 +1,87 @@
+{
+  "app": { "name": "Optier Support Desk" },
+  "nav": {
+    "home": "Home",
+    "tickets": "Tickets",
+    "devices": "Devices",
+    "rma": "Repairs",
+    "knowledge": "Knowledge",
+    "reports": "Reports",
+    "admin": "Admin"
+  },
+  "topbar": {
+    "search": "Search tickets, phone numbers",
+    "theme": "Switch theme",
+    "connectionLost": "Connection to the server was lost. Retrying…"
+  },
+  "home": {
+    "title": "My workspace",
+    "startTitle": "Start a ticket",
+    "startHint": "Type the caller's phone number. An open case for that number is shown first.",
+    "startPlaceholder": "Phone number",
+    "startAction": "Start ticket",
+    "open": "Open",
+    "newToday": "New today",
+    "waiting": "Waiting",
+    "recent": "Latest tickets",
+    "noTickets": "No tickets yet. Start one with the phone number above."
+  },
+  "tickets": {
+    "title": "Tickets",
+    "new": "New ticket",
+    "empty": "No tickets match. Clear the search or create a new ticket.",
+    "number": "Ticket",
+    "subject": "Problem",
+    "phone": "Phone",
+    "channel": "Channel",
+    "status": "Status",
+    "priority": "Priority",
+    "created": "Created",
+    "loadError": "Tickets could not be loaded. Check the connection and try again.",
+    "retry": "Try again"
+  },
+  "form": {
+    "phone": "Phone number",
+    "phoneHint": "Optional. Fill it when the caller gives a number.",
+    "subject": "What is the problem?",
+    "subjectHint": "One line is enough. Details can be added later.",
+    "channel": "How did they contact us?",
+    "priority": "Priority",
+    "save": "Create ticket",
+    "saving": "Creating…",
+    "cancel": "Cancel",
+    "openCase": "This number already has an open case: {{number}}.",
+    "created": "Created {{number}}"
+  },
+  "channel": {
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "remote": "Remote",
+    "onsite": "On site",
+    "email": "Email",
+    "other": "Other"
+  },
+  "priority": { "low": "Low", "normal": "Normal", "high": "High", "critical": "Critical" },
+  "status": {
+    "new": "New",
+    "triage": "Triage",
+    "troubleshooting": "Troubleshooting",
+    "waiting_customer": "Waiting for customer",
+    "waiting_oem": "Waiting for OEM",
+    "resolved": "Resolved",
+    "rma": "In repair",
+    "management_escalation": "With management",
+    "closed": "Closed"
+  },
+  "warranty": {
+    "in_warranty": "In warranty",
+    "expiring": "Expiring soon",
+    "expired": "Out of warranty",
+    "unknown": "No proof of sale",
+    "unverified": "stated by customer"
+  },
+  "planned": {
+    "title": "{{name}} is planned for a later milestone",
+    "body": "This area is not built yet. See docs/PLAN.md for the schedule."
+  }
+}

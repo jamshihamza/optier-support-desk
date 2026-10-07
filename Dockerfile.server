@@ -1,0 +1,15 @@
+# API server. Build context is the repo root.
+FROM node:22-slim
+RUN npm install -g pnpm@12.9.1
+WORKDIR /repo
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.base.json ./
+COPY packages/shared/package.json packages/shared/
+COPY apps/server/package.json apps/server/
+RUN pnpm install --frozen-lockfile --filter "@optier/server..."
+COPY packages/shared packages/shared
+COPY apps/server apps/server
+RUN pnpm --filter @optier/shared build && pnpm --filter @optier/server build
+WORKDIR /repo/apps/server
+ENV NODE_ENV=production MIGRATIONS_DIR=/repo/apps/server/migrations
+EXPOSE 3000
+CMD ["node", "dist/main.js"]

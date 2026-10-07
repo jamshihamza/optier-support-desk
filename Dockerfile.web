@@ -1,0 +1,15 @@
+# Web UI built to static files and served by Caddy, which also proxies /api to the server.
+FROM node:22-slim AS build
+RUN npm install -g pnpm@12.9.1
+WORKDIR /repo
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.base.json ./
+COPY packages/shared/package.json packages/shared/
+COPY apps/web/package.json apps/web/
+RUN pnpm install --frozen-lockfile --filter "@optier/web..."
+COPY packages/shared packages/shared
+COPY apps/web apps/web
+RUN pnpm --filter @optier/shared build && pnpm --filter @optier/web build
+
+FROM caddy:2-alpine
+COPY ops/Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /repo/apps/web/dist /srv
