@@ -42,13 +42,17 @@ Each agent gets its own folder and branch so they never overwrite each other.
 git worktree add ../osd-auth    -b feat/auth-rbac
 git worktree add ../osd-catalog -b feat/catalog-devices
 ```
-For each worktree folder:
-1. Copy `.env` from the main folder.
-2. Give it its own database so migrations do not clash:
-   `docker compose -f docker-compose.dev.yml exec db createdb -U optier_owner optier_auth`
-   and set `DATABASE_URL` and `MIGRATION_DATABASE_URL` in that folder's `.env` to end with `/optier_auth` (use `optier_catalog` for the other).
-3. Change `PORT` in `.env` (3001 and 3002) and, if you run the web app in both, start Vite on different ports.
-4. `pnpm install`, then `pnpm --filter @optier/shared build`, `pnpm db:migrate`.
+For each worktree folder (PowerShell, example for `osd-auth`; use `optier_catalog` and port 3002 for the other):
+```
+cd ..\osd-auth
+Copy-Item ..\optier-support-desk\.env .env
+docker compose -f docker-compose.dev.yml exec db createdb -U optier_owner optier_auth
+(Get-Content .env) -replace '/optier$','/optier_auth' -replace '^PORT=3000','PORT=3001' | Set-Content .env
+pnpm install
+pnpm --filter @optier/shared build
+pnpm db:migrate
+```
+This gives the worktree its own database (so migrations never clash) and its own API port. The web dev server reads the port from the same `.env`, so `pnpm dev` in each folder talks to its own API (the web app takes the next free port, 5174 and so on).
 
 Start an agent inside the folder (`claude` or `codex`) and paste:
 > Read AGENTS.md, HANDOFF.md and TASKS.md, then do exactly the task in docs/agent-prompts/M1a-auth-rbac.md (or M1b-catalog-devices.md). Commit after every working step and update HANDOFF.md.
