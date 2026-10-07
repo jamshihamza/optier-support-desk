@@ -44,7 +44,7 @@ export function Drawer({
             aria-label="Close"
             className="rounded-control p-1.5 text-muted hover:bg-surface-2 hover:text-ink"
           >
-            <X size={18} />
+            <X size="1.25rem" />
           </button>
         </header>
         <div className="flex-1 overflow-y-auto p-5">{children}</div>

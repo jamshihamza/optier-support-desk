@@ -12,6 +12,8 @@
   "topbar": {
     "search": "Search tickets, phone numbers",
     "theme": "Switch theme",
+    "smaller": "Smaller text",
+    "larger": "Larger text",
     "connectionLost": "Connection to the server was lost. Retrying…"
   },
   "home": {

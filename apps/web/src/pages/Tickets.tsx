@@ -185,7 +185,7 @@ export function Tickets() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">{t("tickets.title")}</h1>
         <Button variant="primary" onClick={openDrawer}>
-          <Plus size={16} aria-hidden="true" />
+          <Plus size="1rem" aria-hidden="true" />
           {t("tickets.new")}
         </Button>
       </div>

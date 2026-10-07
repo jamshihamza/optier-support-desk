@@ -1,18 +1,23 @@
 export type Theme = "light" | "dark";
-const KEY = "optier-theme";
+// The key carries a version so an older automatic choice is ignored after a theme change.
+const KEY = "optier-theme-v2";
 
+/** Light by default; dark only if the person chose it with the toggle. */
 export function initialTheme(): Theme {
   try {
-    const saved = localStorage.getItem(KEY);
-    if (saved === "light" || saved === "dark") return saved;
+    if (localStorage.getItem(KEY) === "dark") return "dark";
   } catch {
-    /* storage can be unavailable; fall through */
+    /* storage can be unavailable; use the default */
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return "light";
 }
 
 export function applyTheme(theme: Theme): void {
   document.documentElement.dataset.theme = theme;
+}
+
+/** Called only when the person flips the toggle, never automatically. */
+export function saveTheme(theme: Theme): void {
   try {
     localStorage.setItem(KEY, theme);
   } catch {

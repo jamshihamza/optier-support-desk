@@ -13,7 +13,8 @@ import {
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { applyTheme, initialTheme, type Theme } from "../lib/theme";
+import { applyScale, initialScale, type Scale, saveScale, scales, stepScale } from "../lib/scale";
+import { applyTheme, initialTheme, saveTheme, type Theme } from "../lib/theme";
 import { ConnectionBanner } from "./ConnectionBanner";
 
 const nav = [
@@ -34,9 +35,17 @@ export function AppShell() {
   const navigate = useNavigate();
   const search = useRef<HTMLInputElement>(null);
   const [theme, setTheme] = useState<Theme>(initialTheme);
+  const [scale, setScale] = useState<Scale>(initialScale);
   const [query, setQuery] = useState("");
 
   useEffect(() => applyTheme(theme), [theme]);
+  useEffect(() => applyScale(scale), [scale]);
+
+  const changeScale = (direction: 1 | -1) => {
+    const next = stepScale(scale, direction);
+    setScale(next);
+    saveScale(next);
+  };
 
   // Shortcuts: N new ticket, / or Ctrl+K search, G then T tickets, G then H home.
   useEffect(() => {
@@ -102,7 +111,7 @@ export function AppShell() {
                 }`
               }
             >
-              <Icon size={18} aria-hidden="true" />
+              <Icon size="1.25rem" aria-hidden="true" />
               {t(`nav.${key}`)}
             </NavLink>
           ))}
@@ -114,7 +123,7 @@ export function AppShell() {
         <header className="flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-5">
           <form onSubmit={onSearch} className="relative w-full max-w-md">
             <Search
-              size={16}
+              size="1rem"
               aria-hidden="true"
               className="absolute left-3 top-1/2 -translate-y-1/2 text-muted"
             />
@@ -127,14 +136,42 @@ export function AppShell() {
               className="h-9 w-full rounded-control border border-line bg-bg pl-9 pr-3 placeholder:text-muted"
             />
           </form>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-1">
             <button
               type="button"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={() => changeScale(-1)}
+              disabled={scale === scales[0]}
+              aria-label={t("topbar.smaller")}
+              title={t("topbar.smaller")}
+              className="rounded-control px-2 py-1.5 font-semibold text-muted hover:bg-surface-2 hover:text-ink disabled:opacity-40"
+            >
+              <span aria-hidden="true" className="text-xs">
+                A
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => changeScale(1)}
+              disabled={scale === scales[scales.length - 1]}
+              aria-label={t("topbar.larger")}
+              title={t("topbar.larger")}
+              className="rounded-control px-2 py-1.5 font-semibold text-muted hover:bg-surface-2 hover:text-ink disabled:opacity-40"
+            >
+              <span aria-hidden="true" className="text-lg">
+                A
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const next: Theme = theme === "dark" ? "light" : "dark";
+                setTheme(next);
+                saveTheme(next);
+              }}
               aria-label={t("topbar.theme")}
               className="rounded-control p-2 text-muted hover:bg-surface-2 hover:text-ink"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === "dark" ? <Sun size="1.25rem" /> : <Moon size="1.25rem" />}
             </button>
           </div>
         </header>

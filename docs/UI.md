@@ -16,10 +16,10 @@ Primary target: desktop browsers at 1280px and wider. This is a tool used all da
 
 | Group | Spec |
 |-------|------|
-| Neutrals | slate scale (50 to 950) |
-| Brand accent | OPTIER logo royal blue `#2b328c` (dark theme: lighter `#9aa6ee`); neutrals tinted with the logo navy `#0f1027`. Used for primary buttons, links, active nav. All text/background pairs checked to WCAG AA |
+| Neutrals | standard neutral greys: light (page `#f4f5f7`, cards white, text `#111827`) and a dark-grey theme (page `#1c2128`, cards `#22272e`, text `#d7dde4`), not tinted navy. Light is the default; dark is chosen with the toggle |
+| Brand accent | OPTIER logo royal blue `#2b328c` (dark theme: lighter `#9ba8f4`). It is the only brand colour; used for primary buttons, links, active nav. All text/background pairs checked to WCAG AA |
 | Semantic | green = resolved / in warranty; amber = waiting / at risk; red = breach / critical / out of warranty; blue = in progress; grey = closed |
-| Type | Inter, with Noto Sans Malayalam in the fallback stack; 14px base; scale 12/14/16/20/24/32 |
+| Type | Inter, with Noto Sans Malayalam in the fallback stack. All sizes are in rem. Root size defaults to 112.5% (body about 15.75px). Each person can step the interface size through 100%, 112.5%, 125% and 137.5% with the A buttons in the top bar (stored in the browser). Never use px for text, spacing or icons |
 | Spacing | 4px grid |
 | Radius | 8px controls, 12px cards |
 | Elevation | soft shadows, 1px borders preferred in dense tables |

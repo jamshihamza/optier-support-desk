@@ -19,7 +19,7 @@ export function ConnectionBanner() {
       aria-live="polite"
       className="flex items-center gap-2 bg-danger-soft px-4 py-2 text-sm font-medium text-danger"
     >
-      <WifiOff size={16} aria-hidden="true" />
+      <WifiOff size="1rem" aria-hidden="true" />
       {t("topbar.connectionLost")}
     </div>
   );

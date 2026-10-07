@@ -2,10 +2,11 @@ import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { loadConfig } from "./config";
-import { loadDotEnv } from "./load-env";
+import { envHelp, loadDotEnv } from "./load-env";
 
 async function bootstrap() {
-  loadDotEnv();
+  const { loaded, searched } = loadDotEnv();
+  if (!loaded && !process.env.DATABASE_URL) console.error(envHelp(searched));
   const config = loadConfig();
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix("api");

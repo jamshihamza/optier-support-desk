@@ -3,54 +3,55 @@
 @import "@fontsource-variable/noto-sans-malayalam";
 
 /*
- * Design tokens (docs/UI.md section 2). Light is the default; the theme toggle sets
- * data-theme="dark" on <html>. Brand colours come from the OPTIER logo: royal blue #2b328c (accent) and navy #0f1027 (text). Contrast checked to WCAG AA in both themes.
+ * Design tokens (docs/UI.md section 2). Standard neutral light and dark themes; the only brand
+ * colour is the accent from the OPTIER logo (royal blue #2b328c). Light is the default; the theme
+ * toggle sets data-theme="dark" on <html>. Contrast checked to WCAG AA in both themes.
  */
 :root {
-  --bg: #f4f5f9;
+  --bg: #f4f5f7;
   --surface: #ffffff;
-  --surface-2: #eceef5;
-  --border: #d9dce8;
-  --text: #0f1027;
-  --muted: #575d76;
+  --surface-2: #eef0f3;
+  --border: #dfe2e8;
+  --text: #111827;
+  --muted: #4b5563;
   --accent: #2b328c;
   --accent-hover: #222261;
-  --accent-soft: #e3e5f4;
+  --accent-soft: #e6e8f6;
   --accent-fg: #ffffff;
-  --ok: #1f6f42;
-  --ok-soft: #def0e5;
-  --warn: #8f5300;
-  --warn-soft: #fbebcf;
-  --danger: #b3261e;
-  --danger-soft: #f9dedc;
-  --info: #0b6580;
-  --info-soft: #d9eef4;
-  --neutral-soft: #e4e6ee;
-  --shadow: 0 1px 2px rgb(15 16 39 / 0.06), 0 4px 16px rgb(15 16 39 / 0.07);
+  --ok: #166534;
+  --ok-soft: #dcfce7;
+  --warn: #92400e;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --info: #0e7490;
+  --info-soft: #e0f4f8;
+  --neutral-soft: #e5e7eb;
+  --shadow: 0 1px 2px rgb(17 24 39 / 0.06), 0 4px 16px rgb(17 24 39 / 0.07);
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --bg: #0c0e1f;
-  --surface: #131630;
-  --surface-2: #1b1f3d;
-  --border: #2b3050;
-  --text: #e8eaf6;
-  --muted: #9ca2c0;
-  --accent: #9aa6ee;
-  --accent-hover: #b4bdf3;
-  --accent-soft: #232a5c;
-  --accent-fg: #0b0e2b;
-  --ok: #5dc486;
-  --ok-soft: #12301f;
-  --warn: #f0b24a;
-  --warn-soft: #3a2a0c;
-  --danger: #ff8a80;
-  --danger-soft: #3e1814;
-  --info: #6cc4de;
-  --info-soft: #0f2f3b;
-  --neutral-soft: #222741;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px rgb(0 0 0 / 0.35);
+  --bg: #1c2128;
+  --surface: #22272e;
+  --surface-2: #2d333b;
+  --border: #444c56;
+  --text: #d7dde4;
+  --muted: #9aa4b0;
+  --accent: #9ba8f4;
+  --accent-hover: #b3bdf7;
+  --accent-soft: #2e376f;
+  --accent-fg: #10142e;
+  --ok: #6bc78e;
+  --ok-soft: #1e3a2b;
+  --warn: #e3b341;
+  --warn-soft: #3d3015;
+  --danger: #ff8b80;
+  --danger-soft: #4a2321;
+  --info: #6cc7e0;
+  --info-soft: #1b3b46;
+  --neutral-soft: #2f353d;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 20px rgb(0 0 0 / 0.25);
   color-scheme: dark;
 }
 
@@ -81,6 +82,11 @@
   --shadow-soft: var(--shadow);
 }
 
+html {
+  /* Root size drives every rem-based size in the UI. Default 112.5% (18px); people can change it in the top bar. */
+  font-size: 112.5%;
+}
+
 html,
 body,
 #root {
@@ -92,7 +98,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
