@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Client } from "pg";
+import { loadDotEnv } from "../load-env";
 
 /**
  * Minimal SQL migration runner. Applies migrations/*.sql in filename order,
@@ -41,6 +42,7 @@ export async function migrate(connectionString: string, dir: string): Promise<st
 }
 
 if (require.main === module) {
+  loadDotEnv();
   const url = process.env.MIGRATION_DATABASE_URL ?? process.env.DATABASE_URL;
   if (!url) {
     console.error("Set MIGRATION_DATABASE_URL (or DATABASE_URL)");

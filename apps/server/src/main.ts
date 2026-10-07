@@ -2,8 +2,10 @@ import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { loadConfig } from "./config";
+import { loadDotEnv } from "./load-env";
 
 async function bootstrap() {
+  loadDotEnv();
   const config = loadConfig();
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix("api");
