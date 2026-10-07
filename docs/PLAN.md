@@ -173,4 +173,3 @@ Rules:
 3. Whether to import old complaint history (Excel/WhatsApp).
 4. Azoan PC specs and expected concurrent users.
 5. SLA targets per priority.
-6. Brand colour and logo files for the UI.

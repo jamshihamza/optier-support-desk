@@ -14,7 +14,7 @@ Mark `[x]` when done and committed. Agents: take the first unchecked task of the
 - [ ] **Deploy the skeleton on the real Azoan PC** and create one ticket from another PC (Docker files are written but not yet run anywhere)
 - [ ] Push to GitHub and confirm the CI workflow passes
 - [ ] Playwright e2e for create-ticket flow
-- [ ] Look at the UI in a browser on a real screen; adjust tokens (accent colour is a placeholder until the Optier logo is supplied)
+- [ ] Look at the UI in a browser on a real screen; adjust tokens (brand colours now taken from the supplied logo)
 
 ## M1: Auth, RBAC, parties, catalog, devices
 - [ ] Users, argon2id login, httpOnly cookie sessions in Postgres, logout, session revoke
