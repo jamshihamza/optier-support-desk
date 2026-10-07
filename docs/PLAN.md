@@ -101,6 +101,11 @@ Contacts are recognised by **phone number**. Types: end customer, dealer/distrib
 - If a UID has an Axentro record **and** the customer states a different date, the Axentro record wins and the mismatch is flagged for staff.
 - UID and sales data are loaded by CSV bulk import (M1).
 
+### Locations and software context
+- `locations` table with a type: `service_centre`, `warehouse`, `reference`. Seeded: **Edakkara, Malappuram** (Azoan head service centre, the default for RMA and QC); Azoan's second warehouse (address to be supplied); **Sulthan Bathery, Wayanad** and **Kozhikode** as `reference` only. Reference locations cannot be chosen in RMA or assignment in v1.
+- A ticket can record **software context**: VMS version (Windows/Mac), mobile app version, config tool version, device firmware. Many complaints depend on these.
+- The official downloads (Pro VMS for Windows and Mac, IPC Device Configuration Tool, Pro Camera API documentation, all linked from the website's Support and Download page) become the first Knowledge Base articles, with version numbers tracked.
+
 ### Audit
 - DB trigger writes the audit row; the app DB role has no UPDATE/DELETE on `audit_log`.
 - Each transaction sets `SET LOCAL app.user_id`.

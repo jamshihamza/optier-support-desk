@@ -83,13 +83,12 @@ export function AppShell() {
   return (
     <div className="flex h-full">
       <aside className="flex w-56 shrink-0 flex-col border-r border-line bg-surface">
-        <div className="flex h-14 items-center gap-2.5 px-4">
-          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="var(--accent)" />
-            <circle cx="16" cy="16" r="7" fill="none" stroke="var(--accent-fg)" strokeWidth="2.5" />
-            <circle cx="16" cy="16" r="2.5" fill="var(--accent-fg)" />
-          </svg>
-          <span className="font-semibold">{t("app.name")}</span>
+        <div className="flex h-14 items-center gap-2.5 px-3">
+          {/* The logo has dark parts, so it always sits on a white plate to stay legible in dark theme. */}
+          <span className="flex h-9 items-center rounded-control bg-white px-2">
+            <img src="/optier-logo.svg" alt="OPTIER" className="h-6 w-auto" />
+          </span>
+          <span className="font-semibold leading-tight">{t("app.product")}</span>
         </div>
         <nav className="flex flex-col gap-0.5 p-2" aria-label="Main">
           {nav.map(({ to, key, icon: Icon, ...rest }) => (

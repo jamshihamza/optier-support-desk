@@ -22,13 +22,15 @@ Mark `[x]` when done and committed. Agents: take the first unchecked task of the
 - [ ] Permission-based RBAC (permissions table, roles as bundles) + guard + `audit.view` on the audit endpoint
 - [ ] Replace the hard-coded `"system"` actor with the logged-in user
 - [ ] `parties`: organizations (Azoan, Axentro, dealers) and contacts (phone is the lookup key; types: end customer, technician, Axentro staff, integrator)
-- [ ] `catalog`: series, models, datasheet links
+- [ ] `catalog`: series, models keyed on model code (`modelCodeSchema` already in shared), marketing name, kind (ipc/nvr/switch), datasheet links; seed from `docs/samples/catalog-sample.csv`
 - [ ] `devices`: UID, batch, firmware, sale record, warranty status using `warrantyStatus()`
-- [ ] CSV import for UIDs and Axentro sales data (preview + error report)
+- [ ] CSV import for production list and Axentro sales list, per `docs/AXENTRO_IMPORT.md` (preview, row-level error report, conflict handling). Sample files are in `docs/samples/`
 - [ ] Device lookup screen (UI.md 4.3)
 - [ ] Admin screens: users, roles, audit viewer
 
 ## M2: Tickets in full (then pilot with 2 or 3 staff)
+- [ ] `locations` (service_centre, warehouse, reference) seeded with Edakkara as default; reference locations not selectable
+- [ ] Ticket software context fields: VMS version, app version, config tool version, firmware
 - [ ] Ticket detail: timeline (notes, calls, remote, onsite), internal/external toggle, attachments
 - [ ] Quick-create rules from PLAN.md "Contact handling": open-case detection with one-click Log contact, technician minimal mode, purchase_record stored once and reused
 - [ ] SLA clock with pause in waiting states, business hours, Kerala holiday calendar

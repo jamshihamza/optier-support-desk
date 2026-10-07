@@ -55,6 +55,13 @@ export const healthSchema = z.object({
 });
 export type Health = z.infer<typeof healthSchema>;
 
+/** Model codes look like OPT-RY-2MB-3625C: "OPT", a two-letter family, then the spec. */
+export const modelCodeSchema = z
+  .string()
+  .trim()
+  .toUpperCase()
+  .regex(/^OPT-[A-Z]{2}-[A-Z0-9][A-Z0-9-]*$/, "Model code looks like OPT-RY-2MB-3625C");
+
 /** Ticket number as shown to humans, e.g. T-000123. */
 export function formatTicketNumber(n: number): string {
   return `T-${String(n).padStart(6, "0")}`;

@@ -1,0 +1,11 @@
+model_code,series,kind,marketing_name,note
+OPT-RY-2MB-3625C,pro,ipc,2MP Pro Two Way Communication Full Colour Bullet Camera,real: from optiertechnology.com
+OPT-RY-5MPTZ-33X,pro,ipc,33x 5MP 8 Inch IP Intelligent Alert Tracking And Security PTZ Dome Camera,real: from optiertechnology.com
+OPT-ZZ-PRO-IPC-4MP,pro,ipc,Sample Pro IPC 4MP,fake
+OPT-ZZ-PRO-IPC-8MP,pro,ipc,Sample Pro IPC 8MP,fake
+OPT-ZZ-PRO-NVR-16,pro,nvr,Sample Pro NVR 16 channel,fake
+OPT-ZZ-VAL-IPC-2MP,value,ipc,Sample Value IPC 2MP,fake
+OPT-ZZ-VAL-NVR-8,value,nvr,Sample Value NVR 8 channel,fake
+OPT-ZZ-CLS-IPC-2MP,classic,ipc,Sample Classic IPC 2MP,fake
+OPT-ZZ-CLS-NVR-4,classic,nvr,Sample Classic NVR 4 channel,fake
+OPT-ZZ-POE-8P,poe,switch,Sample PoE switch 8 port,fake

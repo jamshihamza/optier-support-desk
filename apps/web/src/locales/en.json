@@ -1,5 +1,5 @@
 {
-  "app": { "name": "Optier Support Desk" },
+  "app": { "name": "Optier Support Desk", "product": "Support Desk" },
   "nav": {
     "home": "Home",
     "tickets": "Tickets",

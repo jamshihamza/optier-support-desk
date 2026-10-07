@@ -32,8 +32,8 @@ Or on a server: `docker compose up -d --build` (see `ops/RUNBOOK.md`).
 ## Known gaps and caveats
 - No authentication yet: every request is acted as `"system"`. Do not expose the server beyond a trusted LAN until M1 is done.
 - Audit endpoint `/api/audit/:table/:id` is unauthenticated until RBAC exists.
-- Accent colour (`--accent` in `apps/web/src/styles.css`) is a placeholder; swap in the Optier brand colour.
+- Brand colours and logo now come from the supplied OPTIER logo (royal blue `#2b328c`). The UI still has not been looked at in a real browser.
 - Package versions resolved at install time are recorded in `pnpm-lock.yaml`; keep `--frozen-lockfile` in CI.
 
 ## Open business questions (see docs/PLAN.md section 11)
-Axentro sales data format, old complaint history import, SLA targets, PC specs and concurrent users, logo and brand colour.
+Real Axentro sales data (sample format in docs/AXENTRO_IMPORT.md), Azoan's full list of model codes, old complaint history import, SLA targets, PC specs and concurrent users, address of Azoan's second warehouse.

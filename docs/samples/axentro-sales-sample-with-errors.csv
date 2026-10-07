@@ -1,0 +1,8 @@
+uid,invoice_no,sale_date,sold_to_name,sold_to_type,sold_to_city,sold_to_phone
+SMP0000000001,AX/25-26/9001,2025-03-10,Sample Dealer B,dealer,Alappuzha,9000000002
+SMP0000000001,AX/25-26/9002,2025-03-12,Sample Dealer C,dealer,Thrissur,9000000003
+SMP9999999999,AX/25-26/9003,2025-04-01,Sample Dealer D,dealer,Kozhikode,9000000004
+SMP0000000002,,2025-04-05,Sample Dealer B,dealer,Alappuzha,9000000002
+SMP0000000003,AX/25-26/9004,05/04/2025,Sample Dealer B,dealer,Alappuzha,9000000002
+SMP0000000004,AX/25-26/9005,2027-01-01,Sample Dealer C,dealer,Thrissur,9000000003
+SMP0000000005,AX/25-26/9006,2025-04-09,,shop,Kochi,12

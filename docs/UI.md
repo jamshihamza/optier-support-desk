@@ -17,12 +17,13 @@ Primary target: desktop browsers at 1280px and wider. This is a tool used all da
 | Group | Spec |
 |-------|------|
 | Neutrals | slate scale (50 to 950) |
-| Brand accent | taken from the Optier logo (open item); used for primary buttons, links, active nav |
+| Brand accent | OPTIER logo royal blue `#2b328c` (dark theme: lighter `#9aa6ee`); neutrals tinted with the logo navy `#0f1027`. Used for primary buttons, links, active nav. All text/background pairs checked to WCAG AA |
 | Semantic | green = resolved / in warranty; amber = waiting / at risk; red = breach / critical / out of warranty; blue = in progress; grey = closed |
 | Type | Inter, with Noto Sans Malayalam in the fallback stack; 14px base; scale 12/14/16/20/24/32 |
 | Spacing | 4px grid |
 | Radius | 8px controls, 12px cards |
 | Elevation | soft shadows, 1px borders preferred in dense tables |
+| Logo | `public/optier-logo.svg` (supplied by the business), always shown on a white plate so its dark parts stay legible in dark theme. Favicon is the lens mark only |
 | Icons | Lucide, 16px in tables, 20px in nav |
 | Components | shadcn/ui on Radix |
 

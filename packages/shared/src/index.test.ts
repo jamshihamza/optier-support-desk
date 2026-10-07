@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { createTicketInputSchema, formatTicketNumber, warrantyEndDate, warrantyStatus } from "./index";
+import {
+  createTicketInputSchema,
+  formatTicketNumber,
+  modelCodeSchema,
+  warrantyEndDate,
+  warrantyStatus,
+} from "./index";
 
 describe("ticket input", () => {
   it("accepts phone + one-line problem and applies defaults", () => {
@@ -32,5 +38,21 @@ describe("warranty (24 months from date of sale)", () => {
     expect(warrantyStatus(new Date("2024-01-20"), now)).toBe("expiring");
     expect(warrantyStatus(new Date("2023-01-01"), now)).toBe("expired");
     expect(warrantyStatus(null, now)).toBe("unknown");
+  });
+});
+
+describe("model code", () => {
+  it("accepts real OPTIER model codes", () => {
+    for (const c of ["OPT-RY-2MB-3625C", "OPT-RY-5MPTZ-33X", "OPT-SE-5MWD3625"]) {
+      expect(modelCodeSchema.safeParse(c).success).toBe(true);
+    }
+  });
+  it("normalises case and whitespace", () => {
+    expect(modelCodeSchema.parse("  opt-ry-2mb-3625c ")).toBe("OPT-RY-2MB-3625C");
+  });
+  it("rejects other formats", () => {
+    for (const c of ["RY-2MB", "OPT-R-2MB", "OPT-RY-", "2MP Pro Bullet Camera"]) {
+      expect(modelCodeSchema.safeParse(c).success).toBe(false);
+    }
   });
 });

@@ -24,3 +24,6 @@ Add new entries at the bottom. Do not rewrite old ones; supersede them with a ne
 | D18 | Fonts (Inter, Noto Sans Malayalam) bundled via @fontsource | The server may have no internet; no CDN calls |
 | D19 | Migrations run as the owner DB role; the app runs as a restricted role with no UPDATE/DELETE on `audit_log`, plus triggers that block changes even for the owner | Tamper-resistant audit |
 | D20 | pnpm `allowBuilds` permits only esbuild install scripts | Supply-chain hygiene |
+| D21 | Device data comes from two sources joined on UID: Azoan production list and Axentro sales list. Importer works with either alone; sale-date conflicts are never overwritten automatically | Azoan and Axentro are separate entities; real Axentro data is not yet available, so work proceeds against the sample files in `docs/samples/` |
+| D22 | Catalog keyed on model code (`OPT-<2 letters>-<spec>`), website name kept as marketing name | Confirmed by the business |
+| D23 | Edakkara, Malappuram is the operating head service centre; Sulthan Bathery and Kozhikode are reference locations only in v1 | Confirmed by the business |
