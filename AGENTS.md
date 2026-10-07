@@ -37,6 +37,6 @@ pnpm db:migrate / pnpm db:seed
 
 ## Working style and handoff
 - One task = one branch (`feat/<module>-<short>`) = small commits. **Commit after every working step**; usage limits can cut you off without warning.
-- Two agents at once: use separate git worktrees and separate modules.
+- Default: **one agent at a time** in the folder, one branch per task. (Optional: two agents at once need separate git worktrees, separate modules and separate databases; see docs/SETUP.md.)
 - Before stopping (or whenever a step finishes), update `HANDOFF.md`: what is done, what is next, blockers, how to verify. `TASKS.md` and `git log` are the source of truth if the two disagree.
 - Definition of done: `pnpm check` passes with `TEST_DATABASE_URL` set, `TASKS.md` ticked, `HANDOFF.md` updated.

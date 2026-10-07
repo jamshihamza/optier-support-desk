@@ -36,7 +36,43 @@ docker compose -f docker-compose.dev.yml exec db createdb -U optier_owner optier
 # or (PowerShell)  $env:TEST_DATABASE_URL="postgres://optier_owner:change-me-owner@localhost:5432/optier_test"
 ```
 
-## 3. Run two agents in parallel (one worktree each)
+## 3. Work with one agent at a time (default)
+Do the tasks in this order: **M1a** (login and permissions), then **M1b** (catalog, devices, import). M1b uses the permission checks that M1a creates.
+
+Start a task (PowerShell, in the repo folder):
+```
+git checkout main
+git pull
+git checkout -b feat/auth-rbac
+claude          # or: codex
+```
+Paste to the agent:
+> Read AGENTS.md, HANDOFF.md and TASKS.md, then do exactly the task in docs/agent-prompts/M1a-auth-rbac.md. Commit after every working step and update HANDOFF.md.
+
+Work in the same folder, with the same `.env` and the same dev database. Only one agent should be open in the folder at a time.
+
+## 4. When an agent hits its usage limit
+Close it, stay in the **same folder and branch**, and open the other agent (`codex` or `claude`). Paste the prompt in `docs/agent-prompts/resume.md`. Anything not yet committed stays in the folder, and the resume prompt tells the new agent to check `git status` first.
+
+## 5. Finish a task
+```
+pnpm check
+git push -u origin feat/auth-rbac
+```
+Open a pull request on GitHub, wait for the CI check to turn green, merge it, then:
+```
+git checkout main
+git pull
+git checkout -b feat/catalog-devices
+```
+and start the next task (`docs/agent-prompts/M1b-catalog-devices.md`) the same way. After each merge, paste the agent's `HANDOFF.md` to Claude in the chat for a review against the architecture rules.
+
+## Safety
+- Agents run commands on your computer. Keep approval prompts on, and read what they ask to run.
+- Never give an agent the server PC's `.env`, real customer data, or production passwords.
+- Never commit `.env` (it is in `.gitignore`).
+
+## Optional: two agents at the same time (one worktree each)
 Each agent gets its own folder and branch so they never overwrite each other.
 ```
 git worktree add ../osd-auth    -b feat/auth-rbac
@@ -57,16 +93,11 @@ This gives the worktree its own database (so migrations never clash) and its own
 Start an agent inside the folder (`claude` or `codex`) and paste:
 > Read AGENTS.md, HANDOFF.md and TASKS.md, then do exactly the task in docs/agent-prompts/M1a-auth-rbac.md (or M1b-catalog-devices.md). Commit after every working step and update HANDOFF.md.
 
-## 4. When an agent hits its usage limit
+### If an agent hits its usage limit (parallel setup)
 Open the other agent in the **same worktree** and paste the prompt in `docs/agent-prompts/resume.md`. Nothing is lost because work is committed in small steps.
 
-## 5. Finish a task
+### Finish a task (parallel setup)
 ```
 git push -u origin feat/auth-rbac
 ```
 Open a pull request on GitHub, wait for the CI check to turn green, then merge. Delete the worktree with `git worktree remove ../osd-auth`.
-
-## Safety
-- Agents run commands on your computer. Keep approval prompts on, and read what they ask to run.
-- Never give an agent the server PC's `.env`, real customer data, or production passwords.
-- Never commit `.env` (it is in `.gitignore`).
